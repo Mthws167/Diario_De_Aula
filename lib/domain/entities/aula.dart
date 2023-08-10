@@ -1,8 +1,13 @@
 import 'turma.dart';
+import '../dto/agendamento_aula_dto.dart';
+import '../portas/primaria/iagendamento_aula.dart';
 
-class Aula {
-  final DateTime dataAula;
-  final Turma turma;
+class Aula implements IAgendamentoAula {
+  final AgendamentoAulaDTO agendamentoAula;
 
-  Aula({required this.dataAula, required this.turma});
+  Aula({required this.agendamentoAula});
+
+  bool validarAgendamento() {
+    return true;
+  }
 }
