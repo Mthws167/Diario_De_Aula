@@ -1,19 +1,41 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:ui';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Color myHexColor = const Color(0xFF00BF63);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Color.fromARGB(0, 1, 255, 56)
-      ),
       home: Scaffold(
-        appBar: AppBar(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(20.0), // here the desired height
+          child: AppBar(
+            backgroundColor: myHexColor,
+          ),
         ),
-        body: YearList(),
+        body: Column(
+          children: [
+             Container(
+              alignment: Alignment.center,
+              child: const Text(
+                '',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Turmas',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Expanded(child: YearList()),
+          ],
+        ),
       ),
     );
   }
@@ -21,7 +43,7 @@ class HomeScreen extends StatelessWidget {
 
 class YearList extends StatelessWidget {
   final List<String> years = ['4º ano', '3º ano', '2º ano', '1º ano'];
-
+  Color myHexColor = const Color(0xFF00BF63);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -38,16 +60,19 @@ class YearList extends StatelessWidget {
           },
           child: Container(
             margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(15),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(width: 5, color: myHexColor),
             ),
-            child: Text(
-              years[index],
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+            child: Center(
+              child: Text(
+                years[index],
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                ),
               ),
             ),
           ),
