@@ -1,9 +1,10 @@
-import '../entities/turma.dart';
-import '../entities/objetivos_aula.dart';
+import 'package:diario_aula/domain/dto/objetivos_aula_dto.dart';
 
-class AgendamentoAulaDTO {
+class SolicitacaoFeedbackDTO {
   final DateTime dataAula;
-  final Turma turma;
+  final ObjetivosAulaDTO objetivosAula;
+  final String feedback;
+  final String autoAvaliacao;
 
-  AgendamentoAulaDTO({required this.turma, required this.dataAula});
+  SolicitacaoFeedbackDTO({required this.dataAula, required this.objetivosAula, required this.autoAvaliacao, required this.feedback});
 }
