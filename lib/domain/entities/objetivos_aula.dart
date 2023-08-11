@@ -1,8 +1,7 @@
-import 'aula.dart';
+import 'solicitacao_feedback.dart';
 
 class ObjetivosAula {
   final String descricao;
-  final Aula aula;
 
-  ObjetivosAula({required this.descricao, required this.aula});
+  ObjetivosAula({required this.descricao});
 }
