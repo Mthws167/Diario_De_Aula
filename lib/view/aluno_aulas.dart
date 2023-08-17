@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
 }
 
 class DateList extends StatelessWidget {
-  final List<String> dates = ['03/08/2023', '10/08/2023', '17/08/2023'];
+  final List<String> dates = ['17/08/2023', '24/08/2023', '31/08/2023'];
   Color myHexColor = const Color(0xFF00BF63);
 
   @override

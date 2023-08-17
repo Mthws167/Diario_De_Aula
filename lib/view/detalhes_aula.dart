@@ -30,7 +30,7 @@ class DateDetails extends StatefulWidget {
 }
 
 class _DateDetailsState extends State<DateDetails> {
-  final List<String> objectives = ['Objetivo 1', 'Objetivo 2', 'Objetivo 3'];
+  final List<String> objectives = [];
   String feedback = '';
   String concept = 'D'; // Definir um valor inicial padrão
   Color myHexColor = const Color(0xFF00BF63);
@@ -53,17 +53,35 @@ class _DateDetailsState extends State<DateDetails> {
               children: objectives
                   .map((objective) => Row(
                         children: [
-                          Checkbox(value: false, onChanged: (value) {
-                            if (value == true){
-                              value = false;
-                            }else{
-                              value = true;
-                            }
-                          }),
+                          Checkbox(
+                            value: objectives.contains(objective),
+                            onChanged: (value) {
+                              setState(() {
+                                if (objectives.contains(objective)) {
+                                  objectives.remove(objective);
+                                } else {
+                                  objectives.add(objective);
+                                }
+                              });
+                            },
+                          ),
                           Text(objective),
                         ],
                       ))
                   .toList(),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  objectives.add('Nova Atividade');
+                });
+              },
+              child: Text('Adicionar Atividade'),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateColor.resolveWith((states) => myHexColor),
+              ),
             ),
             SizedBox(height: 10),
             Text('Feedback:', style: TextStyle(fontSize: 18)),
@@ -99,14 +117,21 @@ class _DateDetailsState extends State<DateDetails> {
               },
               child: Text('Salvar'),
               style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateColor.resolveWith((states) => myHexColor),
-                  fixedSize: MaterialStateProperty.resolveWith(
-                      (states) => Size(0, 20))),
+                backgroundColor:
+                    MaterialStateColor.resolveWith((states) => myHexColor),
+                fixedSize:
+                    MaterialStateProperty.resolveWith((states) => Size(0, 20)),
+              ),
             ),
           ],
         ),
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: DateDetailsPage('2023-08-17'),
+  ));
 }
