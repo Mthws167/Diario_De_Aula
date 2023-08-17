@@ -1,4 +1,6 @@
-import 'package:diario_aula/view/solicitar_feedback.dart';
+import 'package:diario_aula/view/aluno_aulas.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(HomeScreen());
+}
