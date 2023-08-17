@@ -1,41 +1,39 @@
 import 'package:diario_aula/view/detalhes_aula.dart';
 import 'package:flutter/material.dart';
 
+import 'main_drawer.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color myHexColor = const Color(0xFF00BF63);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(20.0),
-          child: AppBar(
-            backgroundColor: myHexColor,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+        backgroundColor: myHexColor,
+      ),
+      drawer: MainDrawer(),
+      body: Column(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            child: const Text(
+              '',
+              style: TextStyle(fontSize: 20),
+            ),
           ),
-        ),
-        body: Column(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              child: const Text(
-                '',
-                style: TextStyle(fontSize: 20),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'Fulano da Silva Vicente',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'Fulano da Silva Vicente',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Expanded(child: DateList()),
-          ],
-        ),
+          ),
+          Expanded(child: DateList()),
+        ],
       ),
     );
   }
@@ -52,6 +50,7 @@ class DateList extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
+            // TODO: Import or define DateDetailsPage
             Navigator.push(
               context,
               MaterialPageRoute(

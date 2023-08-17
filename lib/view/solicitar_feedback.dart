@@ -1,18 +1,6 @@
+import 'package:diario_aula/view/main_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Feedback App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: FeedbackScreen(),
-    );
-  }
-}
 
 class FeedbackScreen extends StatefulWidget {
   @override
@@ -40,10 +28,13 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Color myHexColor = const Color(0xFF00BF63);
     return Scaffold(
       appBar: AppBar(
         title: Text('Solicitar Feedback'),
+        backgroundColor: myHexColor,
       ),
+      drawer: MainDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -61,6 +52,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                     onPressed: () => _selectDate(context),
                     child: Text(DateFormat('dd/MM/yyyy')
                         .format(_selectedDate)), // Formate a data aqui
+                    style: ElevatedButton.styleFrom(
+                      primary: myHexColor, // Cor do botão da data
+                    ),
                   ),
                 ],
               ),
@@ -99,7 +93,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   Text('Auto-avaliação:', style: TextStyle(fontSize: 16)),
                   SizedBox(width: 10),
                   Container(
-                    width: 50, // Ajuste a largura conforme necessário
+                    width: 50,
                     child: TextField(
                       onChanged: (text) {
                         _autoAvaliacao = text;
@@ -110,6 +104,17 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(height: 30),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Solicitar'),
+                  style: ElevatedButton.styleFrom(
+                    primary: myHexColor,
+                    minimumSize: Size(200, 50),
+                  ),
+                ),
               ),
             ],
           ),
