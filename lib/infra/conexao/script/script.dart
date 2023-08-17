@@ -12,6 +12,13 @@ final criarBanco = [
     )
   ''',
   '''    
+    CREATE TABLE ALUNO (
+      id INTEGER NOT NULL PRIMARY KEY,
+      nome VARCHAR(255) NOT NULL,
+      FOREIGN KEY (turma) REFERENCES TURMA(id)
+    )
+  ''',
+  '''    
     CREATE TABLE SOLICITACAO_FEEDBACK (
       id INTEGER NOT NULL PRIMARY KEY,
       data_aula TIMESTAMP NOT NULL,
